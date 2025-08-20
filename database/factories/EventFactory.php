@@ -19,7 +19,7 @@ class EventFactory extends Factory
     {
         return [
             'name' => $this->faker->name(),
-            'description' => $this->faker->text(),
+            'description' => $this->faker->realText(60),
             'state' => $this->faker->randomElement(EventState::class),
             'date' => $this->faker->date(),
             'total_tickets' => $this->faker->randomNumber([0 , 100]),

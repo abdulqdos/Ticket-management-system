@@ -14,16 +14,22 @@ class EventsTable
     {
         return $table
             ->columns([
-                TextColumn::make('name')
+                TextColumn::make("name")
+                    ->label(__('Name'))
                     ->searchable(),
                 TextColumn::make('description')
+                    ->label(__('Description'))
                     ->searchable(),
                 TextColumn::make('state')
+                    ->label(__('State'))
+                    ->badge('primary')
                     ->searchable(),
                 TextColumn::make('date')
-                    ->dateTime()
+                    ->label(__('Date'))
+                    ->date('d-m-Y')
                     ->sortable(),
                 TextColumn::make('total_tickets')
+                    ->label(__('Total Tickets'))
                     ->numeric()
                     ->sortable(),
                 TextColumn::make('created_at')

@@ -26,7 +26,7 @@ class EventResource extends Resource
     protected static ?string $model = Event::class;
 
     protected static string|BackedEnum|null $navigationIcon = 'heroicon-s-calendar';
-
+    protected static ?string $navigationLabel = 'Events';
     protected static ?string $recordTitleAttribute = 'Event';
 
     public static function form(Schema $schema): Schema
@@ -52,9 +52,14 @@ class EventResource extends Resource
                     ->label('Total Tickets')
                     ->required()
                     ->numeric()
-                    ->minValue(0)
+                    ->minValue(0),
             ]
         );
+    }
+
+    public static function getNavigationLabel(): string
+    {
+        return __('Events') ;
     }
 
     public static function table(Table $table): Table

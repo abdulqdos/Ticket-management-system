@@ -29,7 +29,16 @@ class AdminPanelProvider extends PanelProvider
             ->path('/')
             ->login()
             ->colors([
-                'primary' => Color::Violet,
+                'primary' => Color::Teal,
+                'gray' => Color::Gray,
+                'green' => Color::Green,
+                'red' => Color::Red,
+                'yellow' => Color::Yellow,
+                'blue' => Color::Blue,
+                'orange' => Color::Orange,
+                'darkgreen' => '#28a745',
+                'purple' => Color::Purple,
+                'teal' => Color::Teal,
             ])
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\Filament\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\Filament\Pages')
@@ -41,8 +50,6 @@ class AdminPanelProvider extends PanelProvider
                 AccountWidget::class,
                 FilamentInfoWidget::class,
             ])
-            ->defaultLocale('ar')
-            ->locales(['ar', 'en'])
             ->middleware([
                 EncryptCookies::class,
                 AddQueuedCookiesToResponse::class,

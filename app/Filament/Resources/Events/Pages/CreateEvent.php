@@ -8,4 +8,12 @@ use Filament\Resources\Pages\CreateRecord;
 class CreateEvent extends CreateRecord
 {
     protected static string $resource = EventResource::class;
+
+    /**
+     * @return string|null
+     */
+    public function getHeading(): string
+    {
+        return __('Create Event');
+    }
 }
