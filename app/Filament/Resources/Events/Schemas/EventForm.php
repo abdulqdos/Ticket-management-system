@@ -13,14 +13,19 @@ class EventForm
         return $schema
             ->components([
                 TextInput::make('name')
+                    ->label(__('Name'))
                     ->required(),
                 TextInput::make('description')
+                    ->label(__('Description'))
                     ->required(),
                 TextInput::make('state')
+                    ->label(__('State'))
                     ->required(),
                 DateTimePicker::make('date')
+                    ->label(__('Date'))
                     ->required(),
                 TextInput::make('total_tickets')
+                    ->label(__('Total Tickets'))
                     ->required()
                     ->numeric(),
             ]);

@@ -34,22 +34,25 @@ class EventResource extends Resource
         return $schema->inlineLabel()->components(
             [
                 TextInput::make('name')
+                    ->label(__('Name'))
                     ->required()
                     ->minLength(2)
                     ->maxLength(255)
                     ->placeholder('Event name'),
                 TextInput::make('description')
-                    ->label('Description')
+                    ->label(__('Description'))
                     ->required()
                     ->maxLength(255)
                     ->placeholder('Event description'),
                 DatePicker::make('date')
+                    ->label(__('Date'))
                     ->native(false)
                     ->displayFormat('d/m/Y'),
                 Select::make('state')
+                    ->label(__('State'))
                     ->options(EventState::class),
                 TextInput::make('total_tickets')
-                    ->label('Total Tickets')
+                    ->label(__('Total Tickets'))
                     ->required()
                     ->numeric()
                     ->minValue(0),
