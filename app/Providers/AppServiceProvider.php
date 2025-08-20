@@ -19,6 +19,21 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+//        Form::configureUsing(function (Form $form) {
+//            $form->extraAttributes([
+//                'lang' => 'en',
+//            ]);
+//        });
+//
+//        TextColumn::configureUsing(function (Column $column) {
+//            $column->extraAttributes([
+//                'lang' => 'en',
+//            ]);
+//        });
+//
+//        LanguageSwitch::configureUsing(function (LanguageSwitch $switch) {
+//            $switch
+//                ->locales(['ar', 'en']);
+//        });
     }
 }

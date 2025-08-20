@@ -29,7 +29,7 @@ class AdminPanelProvider extends PanelProvider
             ->path('/')
             ->login()
             ->colors([
-                'primary' => Color::Amber,
+                'primary' => Color::Violet,
             ])
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\Filament\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\Filament\Pages')
@@ -41,6 +41,8 @@ class AdminPanelProvider extends PanelProvider
                 AccountWidget::class,
                 FilamentInfoWidget::class,
             ])
+            ->defaultLocale('ar')
+            ->locales(['ar', 'en'])
             ->middleware([
                 EncryptCookies::class,
                 AddQueuedCookiesToResponse::class,

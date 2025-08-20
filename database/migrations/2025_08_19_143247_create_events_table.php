@@ -1,5 +1,6 @@
 <?php
 
+use App\Enum\EventState;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -15,8 +16,8 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('description');
-            $table->string('state');
-            $table->datetime('date');
+            $table->string('state')->default(EventState::PENDING);
+            $table->date('date');
             $table->integer('total_tickets');
             $table->timestamps();
         });
