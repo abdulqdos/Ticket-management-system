@@ -16,10 +16,6 @@
     "Create Event": "إضافة حدث",
     "Edit Event": "تعديل حدث",
     "Delete Event": "حذف حدث",
-    "Organizations": "المؤسسات",
-    "Organization": "مؤسسة",
-    "Volunteers": "المتطوعين",
-    "Volunteer": "متطوع",
 
     "Create": "إضافة",
     "Edit": "تعديل",
@@ -58,6 +54,9 @@
     "State": "الحالة",
     "Date": "التاريخ",
     "Total Tickets": "إجمالي التذاكر",
+    "INACTIVE": "غير متاحة",
+    "ACTIVE": "متاحة",
+    "PENDING": "قريبا",
     "Created At": "تاريخ الإنشاء",
     "Updated At": "تاريخ التحديث",
 

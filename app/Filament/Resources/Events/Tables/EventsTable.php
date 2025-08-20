@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\Events\Tables;
 
+use App\Enum\EventState;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
@@ -22,8 +23,9 @@ class EventsTable
                     ->searchable(),
                 TextColumn::make('state')
                     ->label(__('State'))
-                    ->badge('primary')
-                    ->searchable(),
+                    ->badge()
+                    ->formatStateUsing(fn (string $state) => EventState::from($state)->getLabel())
+                    ->color(fn (string $state) => EventState::from($state)->getColor()),
                 TextColumn::make('date')
                     ->label(__('Date'))
                     ->date('d-m-Y')
