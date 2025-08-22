@@ -2,7 +2,6 @@
 
 namespace App\Filament\Resources\Events;
 
-use App\Enum\EventState;
 use App\Filament\Resources\Events\Pages\CreateEvent;
 use App\Filament\Resources\Events\Pages\EditEvent;
 use App\Filament\Resources\Events\Pages\ListEvents;
@@ -48,9 +47,6 @@ class EventResource extends Resource
                     ->label(__('Date'))
                     ->native(false)
                     ->displayFormat('d/m/Y'),
-                Select::make('state')
-                    ->label(__('State'))
-                    ->options(EventState::class),
                 TextInput::make('total_tickets')
                     ->label(__('Total Tickets'))
                     ->required()
@@ -85,4 +81,5 @@ class EventResource extends Resource
 //            'edit' => EditEvent::route('/{record}/edit'),
         ];
     }
+
 }

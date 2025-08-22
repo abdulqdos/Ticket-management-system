@@ -2,7 +2,6 @@
 
 namespace Database\Factories;
 
-use App\Enum\EventState;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -20,7 +19,6 @@ class EventFactory extends Factory
         return [
             'name' => $this->faker->name(),
             'description' => $this->faker->realText(60),
-            'state' => $this->faker->randomElement(EventState::class),
             'date' => $this->faker->date(),
             'total_tickets' => $this->faker->randomNumber([0 , 100]),
         ];

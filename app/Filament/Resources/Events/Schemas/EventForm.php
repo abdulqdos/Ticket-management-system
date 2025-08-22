@@ -18,9 +18,6 @@ class EventForm
                 TextInput::make('description')
                     ->label(__('Description'))
                     ->required(),
-                TextInput::make('state')
-                    ->label(__('State'))
-                    ->required(),
                 DateTimePicker::make('date')
                     ->label(__('Date'))
                     ->required(),

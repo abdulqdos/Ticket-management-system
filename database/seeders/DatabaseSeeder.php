@@ -22,8 +22,7 @@ class DatabaseSeeder extends Seeder
             'email' => 'test@example.com',
         ]);
 
-        Event::factory()->create([
-            'state' => EventState::PENDING,
+        Event::factory(10)->create([
             'date' => now()->addDay(4),
             'total_tickets' => 50,
         ]);
