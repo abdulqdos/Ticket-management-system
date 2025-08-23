@@ -15,7 +15,7 @@ class CreatEventAction
         public int $total_tickets,
     ) {}
 
-    public function executeAction(): Event
+    public function execute(): Event
     {
         return DB::transaction(function () {
             return Event::create([

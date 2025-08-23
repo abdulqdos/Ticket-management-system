@@ -2,6 +2,8 @@
 
 namespace App\Filament\Resources\Events\Tables;
 
+use App\actions\EventsActions\EditEventAction;
+use App\Models\Event;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
@@ -41,7 +43,14 @@ class EventsTable
                 //
             ])
             ->recordActions([
-                EditAction::make(),
+                EditAction::make()
+                    ->using(fn ($record , array $data): Event => ((new EditEventAction(
+                        event: $record,
+                        name: $data['name'],
+                        description: $data['description'],
+                        date: $data['date'],
+                        total_tickets: $data['total_tickets'],
+                    ))->execute())),
             ])
             ->toolbarActions([
                 BulkActionGroup::make([

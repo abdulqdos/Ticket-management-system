@@ -25,4 +25,6 @@ class ListEvents extends ListRecords
     {
         return  __('Events');
     }
+
+
 }

@@ -4,7 +4,7 @@ namespace App\Filament\Resources\Events\Pages;
 
 use App\Filament\Resources\Events\EventResource;
 use Filament\Resources\Pages\CreateRecord;
-use App\Actions\EventsActions\CreatEventAction ;
+use App\actions\EventsActions\CreatEventAction ;
 class CreateEvent extends CreateRecord
 {
     protected static string $resource = EventResource::class;
@@ -17,14 +17,13 @@ class CreateEvent extends CreateRecord
         return __('Create Event');
     }
 
-
-    public function getSubmitAction(array $eventData,): CreatEventAction
+    protected function handleRecordCreation(array $data): \App\Models\Event
     {
-        return new CreatEventAction(
-            name:  $eventData['name'],
-            description: $eventData['description'],
-            date:      $eventData['date'],
-            total_tickets:      $eventData['total_tickets'],
-        );
+        return ((new CreatEventAction(
+            name: $data['name'],
+            description: $data['description'],
+            date: $data['date'],
+            total_tickets: $data['total_tickets'],
+        ))->execute());
     }
 }
