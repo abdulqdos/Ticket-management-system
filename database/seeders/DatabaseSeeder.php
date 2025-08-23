@@ -7,6 +7,7 @@ use App\Models\Event;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Spatie\Permission\Models\Role;
 
 class DatabaseSeeder extends Seeder
 {
@@ -17,11 +18,18 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
-        User::factory()->create([
+        // Make a Role
+        Role::create(['name' => 'admin' , 'guard_name' => 'web']);
+
+        // Create Admin
+        $admin = User::factory()->create([
             'name' => 'Test User',
-            'email' => 'test@example.com',
+            'email' => 'admin@admin.com',
         ]);
 
+        $admin->assignRole('admin');
+
+        // ADd Events
         Event::factory(10)->create([
             'date' => now()->addDay(4),
             'total_tickets' => 50,

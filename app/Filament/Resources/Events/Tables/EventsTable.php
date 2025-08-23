@@ -5,6 +5,7 @@ namespace App\Filament\Resources\Events\Tables;
 use App\actions\EventsActions\EditEventAction;
 use App\Models\Event;
 use Filament\Actions\BulkActionGroup;
+use Filament\Actions\DeleteAction;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Tables\Columns\TextColumn;
@@ -51,6 +52,7 @@ class EventsTable
                         date: $data['date'],
                         total_tickets: $data['total_tickets'],
                     ))->execute())),
+                DeleteAction::make(),
             ])
             ->toolbarActions([
                 BulkActionGroup::make([
