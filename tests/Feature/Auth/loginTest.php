@@ -1,3 +1,3 @@
 <?php
 
-it('' , fn() => $this->assertTrue(true));
+it('Hello Test' , fn() => $this->assertTrue(true));
