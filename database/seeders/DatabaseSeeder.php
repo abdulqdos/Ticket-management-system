@@ -3,9 +3,11 @@
 namespace Database\Seeders;
 
 use App\Enum\EventState;
+use App\Models\Customer;
 use App\Models\Event;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Database\Factories\CustomerFactory;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Role;
 
@@ -33,6 +35,11 @@ class DatabaseSeeder extends Seeder
         Event::factory(10)->create([
             'date' => now()->addDay(4),
             'total_tickets' => 50,
+        ]);
+
+        // Add Customer
+        Customer::factory()->create([
+            'phone' => "0916050468"
         ]);
     }
 }
