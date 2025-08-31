@@ -6,13 +6,6 @@ use function Pest\Laravel\post;
 use Illuminate\Support\Facades\Hash;
 
 beforeEach(function () {
-    $this->user = User::factory()->create();
-//    dd($this->user);
-});
-
-
-
-beforeEach(function () {
     $this->user = Customer::factory()->create([
         'phone' => '0916050469',
         'password' => Hash::make('password123'),

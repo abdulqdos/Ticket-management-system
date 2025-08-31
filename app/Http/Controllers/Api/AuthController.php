@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\actions\CustomerActions\CreateCustomerAction;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\LoginRequest;
+use App\Http\Requests\Api\RegisterRequest;
 use App\Models\Customer;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -45,12 +47,30 @@ class AuthController extends Controller
         if ($customer) {
             $customer->currentAccessToken()->delete();
         }
-        
+
         return $this->ok('Logged out successfully');
     }
 
-    public function Register(Request $request)
+    public function register(RegisterRequest $request)
     {
-        return "we are good";
+        $request->validated();
+
+        // Create new Customer
+        $customer = (new CreateCustomerAction(
+            phone:       $request->phone,
+            backupPhone: $request->backup_phone,
+            firstName:   $request->first_name,
+            lastName:    $request->last_name,
+            email:       $request->email,
+            password:    $request->password
+        ))->execute();
+
+        // Return Respone With Token
+        return $this->ok(
+            'Customer registered successfully',
+            [
+                'token' => $customer->createToken('API token for ' . $customer->phone)->plainTextToken,
+            ]
+        );
     }
 }
