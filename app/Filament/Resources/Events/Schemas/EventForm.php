@@ -15,10 +15,13 @@ class EventForm
         return $schema
             ->components([
                 TextInput::make('name')
+                    ->label(__('Name'))
                     ->required(),
                 TextInput::make('description')
+                    ->label(__('Description'))
                     ->required(),
                 Select::make('location')
+                    ->label(__('Location'))
                     ->options([
                         "Tripoli",
                         "Bengazi",
@@ -26,18 +29,20 @@ class EventForm
                     ])
                     ->required(),
                 DateTimePicker::make('start_date')
+                    ->label(__('Start Date'))
                     ->native(false)
                     ->required()
                     ->minDate(now())
                     ->displayFormat('Y-m-d h:i A'),
                 DateTimePicker::make('end_date')
+                    ->label(__('End Date'))
                     ->native(false)
                     ->required()
                     ->minDate(fn (callable $get) => $get('start_date'))
                     ->displayFormat('Y-m-d h:i A'),
 
                 Select::make('company_id')
-                    ->label(__('company'))
+                    ->label(__('Company'))
                     ->options(Company::all()->pluck('name', 'id'))
                     ->required(),
             ]);
