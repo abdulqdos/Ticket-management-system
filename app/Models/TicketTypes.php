@@ -5,19 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Booking extends Model
+class TicketTypes extends Model
 {
-    /** @use HasFactory<\Database\Factories\BookingFactory> */
+    /** @use HasFactory<\Database\Factories\TicketTypesFactory> */
     use HasFactory;
 
-    public function event()
+    public function Event()
     {
         return $this->belongsTo(Event::class);
     }
 
-    public function user()
+    public function tickets()
     {
-        return $this->belongsTo(User::class);
+        return $this->hasMany(Ticket::class);
     }
-
 }

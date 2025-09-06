@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Enum\EventState;
 use App\Models\Customer;
 use App\Models\Event;
 use App\Models\User;
@@ -31,15 +30,6 @@ class DatabaseSeeder extends Seeder
 
         $admin->assignRole('admin');
 
-        // ADd Events
-        Event::factory(10)->create([
-            'date' => now()->addDay(4),
-            'total_tickets' => 50,
-        ]);
-
-        // Add Customer
-        Customer::factory()->create([
-            'phone' => "0916050468"
-        ]);
+        Event::factory(10)->create();
     }
 }

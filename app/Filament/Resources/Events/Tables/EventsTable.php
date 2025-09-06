@@ -2,13 +2,14 @@
 
 namespace App\Filament\Resources\Events\Tables;
 
-use App\actions\EventsActions\EditEventAction;
-use App\Models\Event;
 use Filament\Actions\BulkActionGroup;
-use Filament\Actions\DeleteAction;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
+use Filament\Actions\ForceDeleteBulkAction;
+use Filament\Actions\RestoreBulkAction;
+use Filament\Actions\ViewAction;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Filters\TrashedFilter;
 use Filament\Tables\Table;
 
 class EventsTable
@@ -17,20 +18,23 @@ class EventsTable
     {
         return $table
             ->columns([
-                TextColumn::make("name")
-                    ->label(__('Name'))
+                TextColumn::make('name')
                     ->searchable(),
                 TextColumn::make('description')
-                    ->label(__('Description'))
                     ->searchable(),
-                TextColumn::make('date')
-                    ->label(__('Date'))
-                    ->date('d-m-Y')
-                    ->sortable(),
-                TextColumn::make('total_tickets')
-                    ->label(__('Total Tickets'))
+                TextColumn::make('location')
                     ->numeric()
                     ->sortable(),
+                TextColumn::make('start_date')
+                    ->dateTime()
+                    ->sortable(),
+                TextColumn::make('end_date')
+                    ->dateTime()
+                    ->sortable(),
+                TextColumn::make('deleted_at')
+                    ->dateTime()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
@@ -39,24 +43,22 @@ class EventsTable
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
+                TextColumn::make('company_id')
+                    ->numeric()
+                    ->sortable(),
             ])
             ->filters([
-                //
+                TrashedFilter::make(),
             ])
             ->recordActions([
-                EditAction::make()
-                    ->using(fn ($record , array $data): Event => ((new EditEventAction(
-                        event: $record,
-                        name: $data['name'],
-                        description: $data['description'],
-                        date: $data['date'],
-                        total_tickets: $data['total_tickets'],
-                    ))->execute())),
-                DeleteAction::make(),
+                ViewAction::make(),
+                EditAction::make(),
             ])
             ->toolbarActions([
                 BulkActionGroup::make([
                     DeleteBulkAction::make(),
+                    ForceDeleteBulkAction::make(),
+                    RestoreBulkAction::make(),
                 ]),
             ]);
     }
