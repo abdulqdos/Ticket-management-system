@@ -26,6 +26,7 @@ class EventResource extends Resource
     protected static ?string $navigationLabel = 'Events';
     protected static ?string $recordTitleAttribute = 'Event';
 
+
     public static function form(Schema $schema): Schema
     {
         return EventForm::configure($schema);
@@ -54,7 +55,6 @@ class EventResource extends Resource
             'index' => ListEvents::route('/'),
             'create' => CreateEvent::route('/create'),
             'view' => ViewEvent::route('/{record}'),
-//            'edit' => EditEvent::route('/{record}/edit'),
         ];
     }
 
@@ -68,7 +68,25 @@ class EventResource extends Resource
 
     public static function getNavigationLabel(): string
     {
-        return __('Events') ;
+        return __('Events');
     }
+
+
+    public static function getTitle(): string
+    {
+        return __('Event list');
+    }
+
+    public static function getPluralModelLabel(): string
+    {
+        return __('Events');
+    }
+
+
+    public static function getModelLabel(): string
+    {
+        return __('Event');
+    }
+
 
 }
