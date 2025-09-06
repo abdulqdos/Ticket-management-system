@@ -16,6 +16,7 @@
     "Create Event": "إضافة حدث",
     "Edit Event": "تعديل حدث",
     "Delete Event": "حذف حدث",
+    "View Event": "عرض الحدث",
     "Create": "إضافة",
     "Edit": "تعديل",
     "Delete": "حذف",
@@ -63,7 +64,7 @@
     "End Date": "تاريخ النهاية",
     "Company": "الشركة",
     "Location": "المكان",
-
+    "Main Information": "معلومات الأساسية",
     "Create :resource": "إضافة :resource",
     "Edit :resource": "تعديل :resource",
     "Delete :resource": "حذف :resource",
