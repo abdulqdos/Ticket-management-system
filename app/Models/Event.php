@@ -13,9 +13,14 @@ class Event extends Model
 
     protected $guarded = [];
 
-    public function Bookings()
+    public function ticketTypes()
     {
-        return $this->hasMany(Booking::class);
+        return $this->hasMany(TicketTypes::class);
+    }
+
+    public function company()
+    {
+        return $this->belongsTo(Company::class);
     }
 
 }

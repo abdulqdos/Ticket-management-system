@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Company;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -19,8 +20,10 @@ class EventFactory extends Factory
         return [
             'name' => $this->faker->name(),
             'description' => $this->faker->realText(60),
-            'date' => $this->faker->date(),
-            'total_tickets' => $this->faker->randomNumber([0 , 100]),
+            'start_date' => $this->faker->dateTime(),
+            'end_date' => $this->faker->dateTime(),
+            'location' => $this->faker->city(),
+            'company_id' => Company::factory(),
         ];
     }
 }

@@ -4,11 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Laravel\Sanctum\HasApiTokens;
 
-class Customer extends Authenticatable
+class Company extends Model
 {
+    /** @use HasFactory<\Database\Factories\CompanyFactory> */
     use HasFactory , HasApiTokens;
 
     protected $guarded = [
@@ -29,9 +30,8 @@ class Customer extends Authenticatable
         'password'          => 'hashed',
     ];
 
-    public function tickets()
+    public function events(): HasMany
     {
-        return $this->hasMany(Ticket::class);
+        return $this->hasMany(Event::class);
     }
-
 }
