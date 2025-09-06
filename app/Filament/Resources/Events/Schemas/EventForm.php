@@ -2,7 +2,9 @@
 
 namespace App\Filament\Resources\Events\Schemas;
 
+use App\Models\Company;
 use Filament\Forms\Components\DateTimePicker;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Schema;
 
@@ -16,16 +18,28 @@ class EventForm
                     ->required(),
                 TextInput::make('description')
                     ->required(),
-                TextInput::make('location')
-                    ->required()
-                    ->numeric(),
+                Select::make('location')
+                    ->options([
+                        "Tripoli",
+                        "Bengazi",
+                        "Misrata"
+                    ])
+                    ->required(),
                 DateTimePicker::make('start_date')
-                    ->required(),
-                DateTimePicker::make('end_date')
-                    ->required(),
-                TextInput::make('company_id')
+                    ->native(false)
                     ->required()
-                    ->numeric(),
+                    ->minDate(now())
+                    ->displayFormat('Y-m-d h:i A'),
+                DateTimePicker::make('end_date')
+                    ->native(false)
+                    ->required()
+                    ->minDate(fn (callable $get) => $get('start_date'))
+                    ->displayFormat('Y-m-d h:i A'),
+
+                Select::make('company_id')
+                    ->label(__('company'))
+                    ->options(Company::all()->pluck('name', 'id'))
+                    ->required(),
             ]);
     }
 }

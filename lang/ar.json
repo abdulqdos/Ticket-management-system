@@ -16,7 +16,6 @@
     "Create Event": "إضافة حدث",
     "Edit Event": "تعديل حدث",
     "Delete Event": "حذف حدث",
-
     "Create": "إضافة",
     "Edit": "تعديل",
     "Delete": "حذف",
@@ -36,6 +35,7 @@
     "No": "لا",
     "Are you sure?": "هل أنت متأكد؟",
     "This action cannot be undone.": "لا يمكن التراجع عن هذا الإجراء.",
+
 
     "Name": "الاسم",
     "First Name": "الاسم الأول",
@@ -59,6 +59,10 @@
     "PENDING": "قريبا",
     "Created At": "تاريخ الإنشاء",
     "Updated At": "تاريخ التحديث",
+    "Start Date": "تاريخ البداية",
+    "End Date": "تاريخ النهاية",
+    "Company": "الشركة",
+    "Location": "المكان",
 
     "Create :resource": "إضافة :resource",
     "Edit :resource": "تعديل :resource",

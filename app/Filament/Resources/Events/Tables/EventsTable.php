@@ -19,31 +19,39 @@ class EventsTable
         return $table
             ->columns([
                 TextColumn::make('name')
+                    ->label(__('Name'))
                     ->searchable(),
                 TextColumn::make('description')
+                    ->label(__('Description'))
                     ->searchable(),
                 TextColumn::make('location')
-                    ->numeric()
-                    ->sortable(),
+                    ->label(__('Location'))
+                    ->numeric(),
                 TextColumn::make('start_date')
-                    ->dateTime()
+                    ->label(__('Start Date'))
+                    ->dateTime('M d, Y')
                     ->sortable(),
+
                 TextColumn::make('end_date')
-                    ->dateTime()
+                    ->label(__('End Date'))
+                    ->dateTime('M d, Y')
                     ->sortable(),
                 TextColumn::make('deleted_at')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('created_at')
+                    ->label(__('created_at'))
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('updated_at')
+                    ->label(__('updated_at'))
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
-                TextColumn::make('company_id')
+                TextColumn::make('company.name')
+                    ->label(__('Company'))
                     ->numeric()
                     ->sortable(),
             ])
@@ -51,7 +59,7 @@ class EventsTable
                 TrashedFilter::make(),
             ])
             ->recordActions([
-                ViewAction::make(),
+                ViewAction::make()->color("warning"),
                 EditAction::make(),
             ])
             ->toolbarActions([

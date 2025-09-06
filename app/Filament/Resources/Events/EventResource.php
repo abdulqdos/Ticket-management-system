@@ -22,8 +22,8 @@ class EventResource extends Resource
 {
     protected static ?string $model = Event::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
-
+    protected static string|BackedEnum|null $navigationIcon = 'heroicon-s-calendar';
+    protected static ?string $navigationLabel = 'Events';
     protected static ?string $recordTitleAttribute = 'Event';
 
     public static function form(Schema $schema): Schema
@@ -54,7 +54,7 @@ class EventResource extends Resource
             'index' => ListEvents::route('/'),
             'create' => CreateEvent::route('/create'),
             'view' => ViewEvent::route('/{record}'),
-            'edit' => EditEvent::route('/{record}/edit'),
+//            'edit' => EditEvent::route('/{record}/edit'),
         ];
     }
 
@@ -65,4 +65,10 @@ class EventResource extends Resource
                 SoftDeletingScope::class,
             ]);
     }
+
+    public static function getNavigationLabel(): string
+    {
+        return __('Events') ;
+    }
+
 }
