@@ -4,6 +4,7 @@ namespace App\Filament\Resources\Events\Schemas;
 
 use App\Models\Company;
 use Filament\Forms\Components\DateTimePicker;
+use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Schema;
@@ -45,6 +46,17 @@ class EventForm
                     ->label(__('Company'))
                     ->options(Company::all()->pluck('name', 'id'))
                     ->required(),
+
+                Repeater::make('ticketTypes')
+                    ->label('Ticket Types')
+                    ->schema([
+                        TextInput::make('name')->label('Name')->required(),
+                        TextInput::make('price')->label('Price')->required()->minValue(0),
+                        TextInput::make('quantity')->label('Quantity')->required()->minValue(1),
+                    ])
+                    ->minItems(1)
+                    ->createItemButtonLabel('Add Ticket Type')
+                    ->columns(3), // 3 أعمدة: Name | Price | Quantity
             ]);
     }
 }

@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('name'); // Name Like VIP , Economic
             $table->decimal('price',8,2);
             $table->integer('quantity');
+            $table->softDeletes();
             $table->foreignId('event_id')->constrained('events')->cascadeOnDelete();
             $table->timestamps();
         });

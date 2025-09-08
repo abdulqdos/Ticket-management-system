@@ -21,8 +21,8 @@ class CompanyFactory extends Factory
     public function definition(): array
     {
         return [
-            "phone" => $this->faker->phoneNumber(),
-            "name" => $this->faker->company(),
+            "phone" => $this->faker->numerify('09#########'),
+            "name" => $this->faker->name,
             "email" => $this->faker->unique()->safeEmail(),
             'email_verified_at' => now(),
             'password' => static::$password ??= Hash::make('password'),

@@ -2,10 +2,11 @@
 
 namespace App\Filament\Resources\Events\Pages;
 
-use App\actions\EventsActions\CreatEventAction;
+use App\actions\EventActions\CreatEventAction;
 use App\Filament\Resources\Events\EventResource;
 use Filament\Resources\Pages\CreateRecord;
 use Illuminate\Contracts\Support\Htmlable;
+use Illuminate\Support\Facades\DB;
 
 class CreateEvent extends CreateRecord
 {
@@ -20,8 +21,10 @@ class CreateEvent extends CreateRecord
             start_date: $data['start_date'],
             end_date: $data['end_date'],
             company: $data['company_id'],
+            ticketTypes: $data['ticketTypes'],
         ))->execute());
     }
+
     public function getHeading(): string|Htmlable
     {
         return __("Create Event");

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\actions\EventsActions ;
+namespace App\actions\EventActions ;
 use App\Models\Company;
 use App\Models\Event ;
 use Illuminate\Support\Facades\DB;
@@ -12,16 +12,23 @@ class CreatEventAction
     public function __construct(
         public string $name,
         public string $description,
-        public float $location,
+        public string $location,
         public string $start_date,
         public string $end_date,
         public int $company,
+        public array $ticketTypes
     ) {}
 
     public function execute(): Event
     {
+
+        if (empty($this->ticketTypes)) {
+            throw new \InvalidArgumentException('Ticket Types are required');
+        }
+
+
         return DB::transaction(function () {
-            return Event::create([
+            $this->event = Event::create([
                 "name" => $this->name,
                 "description" => $this->description,
                 "start_date" => $this->start_date,
@@ -29,7 +36,18 @@ class CreatEventAction
                 "location" => $this->location,
                 "company_id" => $this->company,
             ]);
+
+            foreach($this->ticketTypes as $type)
+            {
+                (new CreateEventTicketTypes(
+                    name: $type['name'],
+                    price: $type['price'],
+                    quantity: $type['quantity'],
+                    event: $this->event,
+                ))->execute();
+            }
+
+            return $this->event;
         });
     }
-
 }

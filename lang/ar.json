@@ -38,7 +38,6 @@
     "Are you sure?": "هل أنت متأكد؟",
     "This action cannot be undone.": "لا يمكن التراجع عن هذا الإجراء.",
 
-
     "Name": "الاسم",
     "First Name": "الاسم الأول",
     "Last Name": "الاسم الأخير",
@@ -66,6 +65,7 @@
     "Company": "الشركة",
     "Location": "المكان",
     "Main Information": "معلومات الأساسية",
+    "Ticket Types": "أنواع التذاكر",
     "Create :resource": "إضافة :resource",
     "Edit :resource": "تعديل :resource",
     "Delete :resource": "حذف :resource",

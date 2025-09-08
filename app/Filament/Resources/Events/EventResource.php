@@ -45,7 +45,7 @@ class EventResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+//            'ticketTypes' => RelationManagers\TicketTypesRelationManager::class,
         ];
     }
 
