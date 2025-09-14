@@ -11,13 +11,14 @@ use App\Filament\Resources\Events\Schemas\EventInfolist;
 use App\Filament\Resources\Events\Tables\EventsTable;
 use App\Models\Event;
 use BackedEnum;
+use Filament\Forms\Components\TextInput;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
-
+//use Filament\Forms\Components\;
 class EventResource extends Resource
 {
     protected static ?string $model = Event::class;
@@ -88,5 +89,46 @@ class EventResource extends Resource
         return __('Event');
     }
 
+//    public function getTicketTypesCards($event)
+//    {
+//        return $event->ticketTypes->map(function ($ticket) {
+//            return Infolist::make([
+//                TextInput::make('name')
+//                    ->label('Name')
+//                    ->default($ticket->name)
+//                    ->disabled(),
+//
+//                TextInput::make('price')
+//                    ->label('Price')
+//                    ->default($ticket->price . ' USD')
+//                    ->disabled(),
+//
+//                TextInput::make('quantity')
+//                    ->label('Quantity')
+//                    ->default($ticket->quantity)
+//                    ->disabled(),
+//
+//                Actions::make([
+//                    Action::make('edit')
+//                        ->label('Edit')
+//                        ->color('primary')
+//                        ->icon('heroicon-o-pencil')
+//                        ->form([
+//                            TextInput::make('name')->required()->default($ticket->name),
+//                            TextInput::make('price')->numeric()->required()->default($ticket->price),
+//                            TextInput::make('quantity')->required()->default($ticket->quantity),
+//                        ])
+//                        ->action(fn($data) => $ticket->update($data)),
+//
+//                    Action::make('delete')
+//                        ->label('Delete')
+//                        ->color('danger')
+//                        ->icon('heroicon-o-trash')
+//                        ->requiresConfirmation()
+//                        ->action(fn() => $ticket->delete()),
+//                ])->alignment('end'),
+//            ])->columns(4); // 4 أعمدة لكل card
+//        });
+//    }
 
 }
