@@ -22,7 +22,13 @@ class CompanyFactory extends Factory
     {
         return [
             "phone" => $this->faker->numerify('09#########'),
-            "name" => $this->faker->name,
+            "name" => $this->faker->randomElement([
+            "Sahab Tech Solutions",
+                "Libyan Web Co.",
+                "IT Guys Network",
+                "Tripoli Innovations",
+                "Cyber Libya"
+            ]),
             "email" => $this->faker->unique()->safeEmail(),
             'email_verified_at' => now(),
             'password' => static::$password ??= Hash::make('password'),

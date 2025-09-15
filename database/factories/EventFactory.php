@@ -18,11 +18,17 @@ class EventFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => $this->faker->name(),
-            'description' => $this->faker->realText(60),
-            'start_date' => $this->faker->dateTime(),
-            'end_date' => $this->faker->dateTime(),
-            'location' => $this->faker->city(),
+            'name' => $this->faker->randomElement([
+                "Sahab Tech Solutions",
+                "Libyan Web Co.",
+                "IT Guys Network",
+                "Tripoli Innovations",
+                "Cyber Libya"
+            ]),
+            'description' => $this->faker->paragraph(2),
+            'start_date' => $this->faker->dateTimeBetween('tomorrow', '+1 month'),
+            'end_date' => $this->faker->dateTimeBetween('start_date', '+2 weeks'),
+            'location' => $this->faker->city() . ', Libya',
             'company_id' => Company::factory(),
         ];
     }
