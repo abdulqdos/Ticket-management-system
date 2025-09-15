@@ -16,7 +16,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('description');
-            $table->decimal('location');
+            $table->string('location');
             $table->dateTime('start_date');
             $table->dateTime('end_date');
             $table->softDeletes();

@@ -11,13 +11,14 @@ use App\Filament\Resources\Events\Schemas\EventInfolist;
 use App\Filament\Resources\Events\Tables\EventsTable;
 use App\Models\Event;
 use BackedEnum;
+use Filament\Forms\Components\TextInput;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
-
+//use Filament\Forms\Components\;
 class EventResource extends Resource
 {
     protected static ?string $model = Event::class;
@@ -25,6 +26,7 @@ class EventResource extends Resource
     protected static string|BackedEnum|null $navigationIcon = 'heroicon-s-calendar';
     protected static ?string $navigationLabel = 'Events';
     protected static ?string $recordTitleAttribute = 'Event';
+
 
     public static function form(Schema $schema): Schema
     {
@@ -44,7 +46,7 @@ class EventResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            'ticketTypes' => RelationManagers\TicketTypesRelationManager::class,
         ];
     }
 
@@ -54,7 +56,6 @@ class EventResource extends Resource
             'index' => ListEvents::route('/'),
             'create' => CreateEvent::route('/create'),
             'view' => ViewEvent::route('/{record}'),
-//            'edit' => EditEvent::route('/{record}/edit'),
         ];
     }
 
@@ -68,7 +69,24 @@ class EventResource extends Resource
 
     public static function getNavigationLabel(): string
     {
-        return __('Events') ;
+        return __('Events');
+    }
+
+
+    public static function getTitle(): string
+    {
+        return __('Event list');
+    }
+
+    public static function getPluralModelLabel(): string
+    {
+        return __('Events');
+    }
+
+
+    public static function getModelLabel(): string
+    {
+        return __('Event');
     }
 
 }

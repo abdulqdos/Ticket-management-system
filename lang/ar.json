@@ -17,6 +17,7 @@
     "Edit Event": "تعديل حدث",
     "Delete Event": "حذف حدث",
     "View Event": "عرض الحدث",
+    "Event list": "قائمة الأحداث",
     "Create": "إضافة",
     "Edit": "تعديل",
     "Delete": "حذف",
@@ -36,7 +37,6 @@
     "No": "لا",
     "Are you sure?": "هل أنت متأكد؟",
     "This action cannot be undone.": "لا يمكن التراجع عن هذا الإجراء.",
-
 
     "Name": "الاسم",
     "First Name": "الاسم الأول",
@@ -65,6 +65,7 @@
     "Company": "الشركة",
     "Location": "المكان",
     "Main Information": "معلومات الأساسية",
+    "Ticket Types": "أنواع التذاكر",
     "Create :resource": "إضافة :resource",
     "Edit :resource": "تعديل :resource",
     "Delete :resource": "حذف :resource",

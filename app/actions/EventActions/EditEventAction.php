@@ -1,6 +1,6 @@
 <?php
 
-namespace App\actions\EventsActions ;
+namespace App\actions\EventActions ;
 use App\Models\Event;
 use Illuminate\Support\Facades\DB;
 

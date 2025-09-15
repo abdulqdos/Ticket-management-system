@@ -4,12 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class TicketTypes extends Model
 {
     /** @use HasFactory<\Database\Factories\TicketTypesFactory> */
-    use HasFactory;
+    use HasFactory , softDeletes;
 
+    protected $guarded = ['id'];
     public function Event()
     {
         return $this->belongsTo(Event::class);

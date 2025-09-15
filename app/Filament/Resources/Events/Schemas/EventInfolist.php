@@ -2,18 +2,26 @@
 
 namespace App\Filament\Resources\Events\Schemas;
 
+use App\Models\TicketTypes;
+use Filament\Actions\Action;
+use Filament\Actions\DeleteAction;
+use Filament\Actions\EditAction;
+use Filament\Forms\Components\Repeater;
+use Filament\Forms\Components\TextInput;
 use Filament\Infolists\Components\ImageEntry;
+use Filament\Infolists\Components\RepeatableEntry;
 use Filament\Infolists\Components\TextEntry;
+use Filament\Schemas\Components\Actions;
+use Filament\Schemas\Components\Grid;
 use Filament\Schemas\Components\Group;
 use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
-
 class EventInfolist
 {
-
     public static function configure(Schema $schema): Schema
     {
         return $schema
+            ->columns(3)
             ->components([
                 Section::make(__('Main Information'))
                     ->columnSpanFull()
@@ -56,8 +64,6 @@ class EventInfolist
                                     ->icon('heroicon-o-calendar'),
                             ]),
                     ]),
-            ]);
+        ]);
     }
-
-
 }
