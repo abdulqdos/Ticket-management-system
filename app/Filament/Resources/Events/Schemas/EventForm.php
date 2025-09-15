@@ -62,13 +62,13 @@ class EventForm
                    ->collection('event-images')
                    ->multiple()
                    ->image()
-                   ->columnSpanFull(), // صف كامل
+                   ->columnSpanFull(),
 
                // Ticket Types
                Repeater::make('ticketTypes')
                    ->label('Ticket Types')
                    ->schema([
-                       Grid::make(3) // كل تذكرة 3 أعمدة: الاسم، السعر، الكمية
+                       Grid::make(3)
                        ->schema([
                            TextInput::make('name')->label('Name')->required(),
                            TextInput::make('price')->label('Price')->required()->minValue(0),
@@ -77,7 +77,7 @@ class EventForm
                    ])
                    ->minItems(1)
                    ->createItemButtonLabel('Add Ticket Type')
-                   ->columnSpanFull(), // صف كامل
+                   ->columnSpanFull(),
            ]);
     }
 }

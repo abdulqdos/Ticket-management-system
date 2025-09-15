@@ -63,8 +63,6 @@ class EventInfolist
                                 TextEntry::make('location')
                                     ->label(__('Location'))
                                     ->icon('heroicon-o-map-pin'),
-
-
                             ]),
                     ]),
         ]);
