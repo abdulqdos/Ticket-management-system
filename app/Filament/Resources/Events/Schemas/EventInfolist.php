@@ -10,6 +10,7 @@ use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\TextInput;
 use Filament\Infolists\Components\ImageEntry;
 use Filament\Infolists\Components\RepeatableEntry;
+use Filament\Infolists\Components\SpatieMediaLibraryImageEntry;
 use Filament\Infolists\Components\TextEntry;
 use Filament\Schemas\Components\Actions;
 use Filament\Schemas\Components\Grid;
@@ -26,11 +27,11 @@ class EventInfolist
                 Section::make(__('Main Information'))
                     ->columnSpanFull()
                     ->schema([
-                        ImageEntry::make('avatar')
-                            ->circular()
-                            ->defaultImageUrl(
-                                fn ($record) => 'https://ui-avatars.com/api/?background=8A2BE2&color=fff&name=' . urlencode($record->name)
-                            ),
+
+                        SpatieMediaLibraryImageEntry::make('images')
+                            ->label(__('Event Images'))
+                            ->collection("event-images"),
+
                         Group::make()
                             ->columnSpan(2)
                             ->columns(2)
@@ -49,10 +50,6 @@ class EventInfolist
                                     ->columnSpanFull()
                                     ->placeholder('-'),
 
-                                TextEntry::make('location')
-                                    ->label(__('Location'))
-                                    ->icon('heroicon-o-map-pin'),
-
                                 TextEntry::make('start_date')
                                     ->label(__('Start Date'))
                                     ->dateTime('d M Y - h:i A')
@@ -62,6 +59,12 @@ class EventInfolist
                                     ->label(__('End Date'))
                                     ->dateTime('d M Y - h:i A')
                                     ->icon('heroicon-o-calendar'),
+
+                                TextEntry::make('location')
+                                    ->label(__('Location'))
+                                    ->icon('heroicon-o-map-pin'),
+
+
                             ]),
                     ]),
         ]);
