@@ -16,6 +16,8 @@ use Filament\Tables\Table;
 use Filament\Forms;
 use Filament\Schemas\Schema;
 use Filament\Tables;
+use Illuminate\Contracts\Support\Htmlable;
+use Illuminate\Contracts\View\View;
 
 
 class TicketTypesRelationManager extends RelationManager
@@ -28,6 +30,11 @@ class TicketTypesRelationManager extends RelationManager
     public function isReadOnly(): bool
     {
         return false;
+    }
+
+    protected function getTableHeading(): String
+    {
+        return __("Ticket Types");
     }
 
     public function form(Schema $schema): Schema
@@ -55,7 +62,7 @@ class TicketTypesRelationManager extends RelationManager
                 TextColumn::make('quantity')->label(__('quantity')),
             ])
             ->headerActions([
-                CreateAction::make(),
+                CreateAction::make()->label(__("Create")),
             ])->actions([
                 EditAction::make(),
                 DeleteAction::make(),
