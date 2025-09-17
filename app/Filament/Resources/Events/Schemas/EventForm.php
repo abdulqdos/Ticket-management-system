@@ -67,6 +67,7 @@ class EventForm
                // Ticket Types
                Repeater::make('ticketTypes')
                    ->label('Ticket Types')
+                   ->relationship('ticketTypes')
                    ->schema([
                        Grid::make(3)
                        ->schema([
