@@ -35,5 +35,8 @@ class DatabaseSeeder extends Seeder
         $event = Event::factory()->create();
 
         TicketType::factory(2)->recycle($event)->create();
+
+
+        Customer::factory(10)->create();
     }
 }

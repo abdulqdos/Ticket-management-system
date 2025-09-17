@@ -8,8 +8,8 @@ Route::get('/test', function () {
 });
 
 
-Route::prefix('auth')->group(function () {
-   Route::post('/login', [AuthController::class, 'login']);
-    Route::post('/logout', [AuthController::class, 'logout']);
-    Route::post('/register', [AuthController::class, 'register']);
+Route::prefix('customer')->as('api.customer.')->group(function () {
+   Route::post('/login', [AuthController::class, 'login'])->name('login');
+    Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+    Route::post('/register', [AuthController::class, 'register'])->name('register');
 });

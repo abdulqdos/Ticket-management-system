@@ -9,11 +9,20 @@
 
     Auth :
         Login Endpoint => (Completed)
-        Signup EndPoint => (Completed)
-        Logout EndPoint => (Completed)
+        Signup Endpoint => (Completed)
+        Logout Endpoint => (Completed)
         Write Testing (Login , Signup , Logout) => (Completed)
 
+    Events :
+        Get Events Endpoint => (Completed)
+        Get Event Endpoint => (Completed)
+        Write Testing For Both (Completed)
 
     Booking Event :
-         TODO: a lot of things todo
-  
+         Booking Event => (Pending)
+         Cancel Book Event => (Pending)
+
+    Customer :
+        Get Customer => (Pending)
+        Profile => (Pending)
+
