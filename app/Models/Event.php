@@ -17,7 +17,7 @@ class Event extends Model implements HasMedia
 
     public function ticketTypes()
     {
-        return $this->hasMany(TicketTypes::class);
+        return $this->hasMany(TicketType::class);
     }
 
     public function company()

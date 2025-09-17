@@ -2,7 +2,7 @@
 
 namespace App\Filament\Resources\Events\Schemas;
 
-use App\Models\TicketTypes;
+use App\Models\TicketType;
 use Filament\Actions\Action;
 use Filament\Actions\DeleteAction;
 use Filament\Actions\EditAction;

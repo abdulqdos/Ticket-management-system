@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Customer;
 use App\Models\Event;
-use App\Models\TicketTypes;
+use App\Models\TicketType;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Database\Factories\CustomerFactory;
@@ -34,6 +34,6 @@ class DatabaseSeeder extends Seeder
         // Create Event
         $event = Event::factory()->create();
 
-        TicketTypes::factory(2)->recycle($event)->create();
+        TicketType::factory(2)->recycle($event)->create();
     }
 }

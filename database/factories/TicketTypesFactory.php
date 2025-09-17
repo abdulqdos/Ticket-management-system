@@ -6,7 +6,7 @@ use App\Models\Event;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\TicketTypes>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\TicketType>
  */
 class TicketTypesFactory extends Factory
 {
