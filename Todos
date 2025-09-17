@@ -1,0 +1,19 @@
+- Admin Dashboard :
+
+    1 - Events Resource :
+        - CRUD Actions => (Completed)
+        -  Write Tests For CRUD Actions => (Completed)
+
+
+- Apis :
+
+    Auth :
+        Login Endpoint => (Completed)
+        Signup EndPoint => (Completed)
+        Logout EndPoint => (Completed)
+        Write Testing (Login , Signup , Logout) => (Completed)
+
+
+    Booking Event :
+         TODO: a lot of things todo
+  

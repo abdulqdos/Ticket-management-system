@@ -22,7 +22,13 @@ class EventForm
                ->schema([
                    TextInput::make('name')
                        ->label(__('Name'))
-                       ->required(),
+                       ->rules([
+                           'string',
+                           'regex:/^[^<>]*$/',
+                           'required',
+                           'min:4',
+                           "max:255"
+                       ]),
 
                    TextInput::make('description')
                        ->label(__('Description'))
