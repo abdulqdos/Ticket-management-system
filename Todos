@@ -1,0 +1,10 @@
+- Admin Dashboard :
+
+    1 - Events Resource :
+        - CRUD Actions => (Completed)
+        -  Write Tests For CRUD Actions => (Pending)
+
+- Apis :
+
+    Auth :
+        Login Endpoint =>

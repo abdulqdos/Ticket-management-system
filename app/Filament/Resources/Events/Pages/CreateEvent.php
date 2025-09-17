@@ -21,6 +21,7 @@ class CreateEvent extends CreateRecord
             start_date: $data['start_date'],
             end_date: $data['end_date'],
             company: $data['company_id'],
+            city: $data['city_id'],
             ticketTypes: $data['ticketTypes'],
         ))->execute());
     }
