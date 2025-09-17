@@ -1,5 +1,7 @@
 <?php
 
+use App\Filament\Resources\Events\Pages\CreateEvent;
+use App\Models\City;
 use App\Models\Event;
 use App\Models\Company;
 use App\actions\EventActions\CreatEventAction;
@@ -11,13 +13,17 @@ beforeEach(function () {
         "name" => "Sahab"
     ]);
 
+    $this->city = City::factory()->create([
+        "name" => "Tripoli"
+    ]);
+
     $this->ticketTypes = [
-        (object)[
+        [
             'name' => 'VIP',
             'price' => 100,
             'quantity' => 10,
         ],
-        (object)[
+        [
             'name' => 'Regular',
             'price' => 50,
             'quantity' => 20,
@@ -26,14 +32,15 @@ beforeEach(function () {
 
 });
 
-it('creates an event with ticket types', closure: function () {
+it('create an event with ticket types', closure: function () {
     $action = new CreatEventAction(
         name: 'Test Event',
         description: 'This is a test event',
+        location: 'Tripoli',
         start_date: now()->addDays(1),
         end_date: now()->addDays(2),
-        location: 'Tripoli',
         company: $this->company->id,
+        city: $this->city->id,
         ticketTypes: $this->ticketTypes
     );
 
@@ -47,3 +54,33 @@ it('creates an event with ticket types', closure: function () {
     expect($event->ticketTypes)->toHaveCount(2);
     expect($event->ticketTypes()->first()->name)->toBe('VIP');
 });
+
+it('has correct name', function ($badName) {
+    Livewire::test(CreateEvent::class)
+        ->fillForm([
+        'name'        => $badName,
+        'description' => 'This is a description for the event',
+        'start_date'  => now()->addDays(1),
+        'end_date'    => now()->addDays(2),
+        'city_id'     => $this->city->id,
+        'ticketTypes' => [
+            [
+                'name'  => 'VIP',
+                'price' => 100,
+            ],
+            [
+                'name'  => 'Regular',
+                'price' => 50,
+            ]
+        ],
+    ], "form")->call("create")->assertHasFormErrors(["name"]);
+})->with([
+    " ",
+    "abd",
+    str_repeat("a" , 256),
+    123,
+    1.5,
+    "<script></script>",
+    null
+]);
+
