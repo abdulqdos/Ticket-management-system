@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\Events\Schemas;
 
+use App\Models\City;
 use App\Models\Company;
 use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\Repeater;
@@ -27,13 +28,8 @@ class EventForm
                        ->label(__('Description'))
                        ->required(),
 
-                   Select::make('location')
+                   TextInput::make('location')
                        ->label(__('Location'))
-                       ->options([
-                           "Tripoli" => "Tripoli",
-                           "Bengazi" => "Bengazi",
-                           "Misrata" => "Misrata",
-                       ])
                        ->required(),
 
                    DateTimePicker::make('start_date')
@@ -53,6 +49,11 @@ class EventForm
                    Select::make('company_id')
                        ->label(__('Company'))
                        ->options(Company::all()->pluck('name', 'id'))
+                       ->required(),
+
+                   Select::make('city_id')
+                       ->label(__('City'))
+                       ->options(City::all()->pluck('name', 'id'))
                        ->required(),
                ]),
 

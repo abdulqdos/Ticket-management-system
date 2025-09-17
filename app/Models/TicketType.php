@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class TicketType extends Model
 {
-    /** @use HasFactory<\Database\Factories\TicketTypesFactory> */
+    /** @use HasFactory<\Database\Factories\TicketTypeFactory> */
     use HasFactory , softDeletes;
 
     protected $guarded = ['id'];

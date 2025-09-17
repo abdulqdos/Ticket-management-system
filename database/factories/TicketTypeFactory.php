@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\TicketType>
  */
-class TicketTypesFactory extends Factory
+class TicketTypeFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -18,9 +18,14 @@ class TicketTypesFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => $this->faker->name(),
+            'name' => $this->faker->randomElement([
+                "VIP",
+                "Economic",
+                "1-Degree",
+                "2-Degree"
+            ]),
             'price' => $this->faker->randomFloat(2,0,1000),
-            'quantity' => $this->faker->numberBetween(1,10),
+            'quantity' => $this->faker->numberBetween(20,100),
             'event_id' => Event::factory(),
         ];
     }
