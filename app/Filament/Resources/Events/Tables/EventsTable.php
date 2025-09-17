@@ -52,7 +52,10 @@ class EventsTable
                     ->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('company.name')
                     ->label(__('Company'))
-                    ->numeric()
+                    ->sortable(),
+
+                TextColumn::make('city.name')
+                    ->label(__('City'))
                     ->sortable(),
             ])
             ->filters([
