@@ -30,5 +30,5 @@
         Profile => (Pending)
 
       Booking Event :
-             Booking Event => (Pending)
+             Booking Event => (In_progress)
              Cancel Book Event => (Pending)
