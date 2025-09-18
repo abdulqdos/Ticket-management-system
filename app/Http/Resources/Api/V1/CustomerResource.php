@@ -17,7 +17,7 @@ class CustomerResource extends JsonResource
 
         return [
                 "id" => $this->id,
-                "type" => "events",
+                "type" => "customer",
                 "attributes" => [
                     'phone' => $this->phone,
                     'backup_phone' => $this->backup_phone,
@@ -25,6 +25,9 @@ class CustomerResource extends JsonResource
                     'last_name'    => $this->last_name,
                     'email'        => $this->email,
                 ],
+            'links' => [
+                'self' => route('api.v1.customers.show' , ['customer' => $this->id])
+            ],
         ];
     }
 }

@@ -18,11 +18,17 @@
         Get Event Endpoint => (Completed)
         Write Testing For Both (Completed)
 
-    Booking Event :
-         Booking Event => (Pending)
-         Cancel Book Event => (Pending)
+    TicketTypes :
+        Get TicketTypes Endpoint => (Completed)
+        Get TicketType Endpoint => (Completed)
+        Write Testing For Both (Completed)
 
     Customer :
-        Get Customer => (Pending)
+        Get Customers Endpoint => (Completed)
+        Get Customer Endpoint => (Completed)
+        Write Testing For Both (Completed)
         Profile => (Pending)
 
+      Booking Event :
+             Booking Event => (In_progress)
+             Cancel Book Event => (Pending)

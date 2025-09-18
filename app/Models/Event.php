@@ -15,6 +15,11 @@ class Event extends Model implements HasMedia
 
     protected $guarded = [];
 
+    protected $casts = [
+        'start_date' => 'datetime',
+        'end_date' => 'datetime',
+    ];
+
     public function ticketTypes()
     {
         return $this->hasMany(TicketType::class);
