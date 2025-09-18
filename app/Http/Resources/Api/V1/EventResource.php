@@ -24,8 +24,21 @@ class EventResource extends JsonResource
                 "end_date" => $this->end_date,
                 "location" => $this->location,
                 "company" => $this->company,
-                "city" => $this->city,
+
             ],
+            'relationships' => [
+                'ticket_types' => [
+                    'data' => TicketTypeResource::collection($this->ticketTypes),
+                ],
+
+                'city' => [
+                    'data' => CityResource::make($this->city),
+                ],
+
+                'company' => [
+                    'data' => CompanyResource::make($this->company),
+                ]
+            ]
         ];
     }
 }

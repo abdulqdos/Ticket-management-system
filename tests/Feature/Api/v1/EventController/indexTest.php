@@ -17,7 +17,7 @@ it('can access the route', function () {
         ->assertStatus(200);
 });
 
-it('has all customers', function () {
+it('has all events', function () {
     $this->getJson(route('api.v1.events.index'))
         ->assertJson([
             'data' =>  $this->events ,

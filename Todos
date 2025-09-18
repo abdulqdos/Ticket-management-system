@@ -22,7 +22,7 @@
         Get TicketTypes Endpoint => (Pending)
         Get TicketType Endpoint => (Pending)
         Write Testing For Both (Pending)
-    
+
     Booking Event :
          Booking Event => (Pending)
          Cancel Book Event => (Pending)
