@@ -23,22 +23,39 @@ class EventResource extends JsonResource
                 "start_date" => $this->start_date,
                 "end_date" => $this->end_date,
                 "location" => $this->location,
-                "company" => $this->company,
-
             ],
             'relationships' => [
                 'ticket_types' => [
-                    'data' => TicketTypeResource::collection($this->ticketTypes),
+                    'data' => $this->ticketTypes->map(function ($ticketType) {
+                        return [
+                            'type' => 'ticket_types',
+                            'id'   => $ticketType['id'],
+                        ];
+                    }),
                 ],
 
                 'city' => [
-                    'data' => CityResource::make($this->city),
+                    'data' => [
+                        'type' => 'city',
+                        'id' => $this->city_id
+                    ]
                 ],
 
                 'company' => [
-                    'data' => CompanyResource::make($this->company),
-                ]
-            ]
+                    'data' => [
+                        'type' => 'company',
+                        'id' => $this->company_id
+                    ]
+                ],
+            ],
+            'includes' => [
+                'city' => new CityResource($this->city),
+                'company' => new CompanyResource($this->company),
+                'ticketTypes' => TicketTypeResource::collection($this->whenLoaded('ticketTypes')),
+            ],
+            'links' => [
+                'self' => route('api.v1.events.show' , ['event' => $this->id])
+            ],
         ];
     }
 }

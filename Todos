@@ -19,13 +19,9 @@
         Write Testing For Both (Completed)
 
     TicketTypes :
-        Get TicketTypes Endpoint => (Pending)
-        Get TicketType Endpoint => (Pending)
-        Write Testing For Both (Pending)
-
-    Booking Event :
-         Booking Event => (Pending)
-         Cancel Book Event => (Pending)
+        Get TicketTypes Endpoint => (Completed)
+        Get TicketType Endpoint => (Completed)
+        Write Testing For Both (Completed)
 
     Customer :
         Get Customers Endpoint => (Completed)
@@ -33,3 +29,6 @@
         Write Testing For Both (Completed)
         Profile => (Pending)
 
+      Booking Event :
+             Booking Event => (Pending)
+             Cancel Book Event => (Pending)

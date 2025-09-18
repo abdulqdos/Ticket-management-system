@@ -23,6 +23,9 @@ class TicketTypeResource extends JsonResource
                 'quantity' => $this->quantity,
                 'event_id' => $this->event->id
             ],
+            'links' => [
+                'self' => route('api.v1.ticket-types.show' , ['ticket_type' => $this->id])
+            ],
         ];
     }
 }

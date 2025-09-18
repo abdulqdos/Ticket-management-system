@@ -25,6 +25,9 @@ class CustomerResource extends JsonResource
                     'last_name'    => $this->last_name,
                     'email'        => $this->email,
                 ],
+            'links' => [
+                'self' => route('api.v1.customers.show' , ['customer' => $this->id])
+            ],
         ];
     }
 }
