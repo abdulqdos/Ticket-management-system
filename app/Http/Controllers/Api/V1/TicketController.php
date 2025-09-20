@@ -27,7 +27,7 @@ class TicketController extends Controller
         // if ticket belongs to event
          if(!$event->getTicketType($ticketType)) {
              return $this->error([
-                 'message' => 'This ticket type does not belong to the selected event.',
+                 'message' => 'This ticket does not belong to the selected event',
                  'status' => 422
              ], 422);
          }
@@ -42,7 +42,7 @@ class TicketController extends Controller
         // check if ticket still available (count - 1)
         if (!$ticketType->isAvaliable()) {
             return $this->error([
-                'message' => 'No tickets available for this type.',
+                'message' => 'Sorry , No tickets available .',
                 'status' => 422
             ] , 422);
         }
@@ -75,7 +75,7 @@ class TicketController extends Controller
         // if ticket belongs to event
         if (!$event->getTicketType($ticketType)) {
             return $this->error([
-                'message' => 'This ticket type does not belong to the selected event.',
+                'message' => 'This ticket type does not belong to the selected event',
                 'status' => 422
             ], 422);
         }
@@ -83,7 +83,7 @@ class TicketController extends Controller
         // Check if he have Ticket to cancel
         if(!$customer->alreadyBooked($ticketType)) {
             return $this->error([
-                'message' => 'You are dont booked this ticket to cancel',
+                'message' => 'You are do not booked this ticket to cancel',
                 'status' => 422
             ] , 422);
         }
