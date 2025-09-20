@@ -36,7 +36,10 @@ class DatabaseSeeder extends Seeder
 
         TicketType::factory(2)->recycle($event)->create();
 
-
         Customer::factory(10)->create();
+
+        Customer::factory()->create([
+            'phone' => "0916050468",
+        ]);
     }
 }

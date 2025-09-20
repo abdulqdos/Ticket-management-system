@@ -13,48 +13,52 @@ class BookingController extends Controller
 {
     use ApiResponses ;
     // Booking Ticket
-    public  function store(Event $event ,TicketType $ticketType )
+    public  function store($event_id ,$ticketType_id )
     {
         // if the customer dose not booking this ticket before
         $customer = auth()->user();
 
-        $alreadyBooked = $customer->tickets->contains(function ($ticket) use ($ticketType) {
-            return $ticket->ticket_type_id === $ticketType->id;
-        });
-
-        if($alreadyBooked) {
-            return $this->error([
-                'message' => 'You are  already booked this ticket',
-            ] , 422);
-        }
+        // Check if Event && Ticket is Here
+        $event =  Event::FindOrFailWithError($event_id);
+        $ticketType = TicketType::FindOrFailWithError($ticketType_id);
 
 
         // if ticket belongs to event
-        if($event->id !== $ticketType->event_id)
-        {
+         if(!$event->getTicketType($ticketType)) {
+             return $this->error([
+                 'message' => 'This ticket type does not belong to the selected event.',
+                 'status' => 422
+             ], 422);
+         }
+         
+        if($customer->alreadyBooked($ticketType)) {
             return $this->error([
-                'message' => 'This ticket type does not belong to the selected event.',
-            ] , 400);
+                'message' => 'You are  already booked this ticket',
+                'status' => 422
+            ] , 422);
         }
 
         // check if ticket still available (count - 1)
-        if ($ticketType->quantity <= 0) {
+        if (!$ticketType->isAvaliable()) {
             return $this->error([
-                'message' => 'No tickets available for this type.'
-            ] , 400);
+                'message' => 'No tickets available for this type.',
+                'status' => 422
+            ] , 422);
+        } else {
+            $ticketType->decrement('quantity');
         }
 
-        // book a ticket with customer (pivot table)
+     // book a ticket with customer (pivot table)
         $ticket = (new CreateTicketAction(
             ticketType_id: $ticketType->id,
             customer_id: $customer->id
         ))->execute();
 
-
-        return response()->ok([
+        return $this->ok([
             "message" => "Your Booked Has Create Check your profile",
-            'data' => $ticket
-        ], 200 );
+            'data' => $ticket,
+            'status' => 201
+        ], 201 );
     }
 
     // Cancel Booking
