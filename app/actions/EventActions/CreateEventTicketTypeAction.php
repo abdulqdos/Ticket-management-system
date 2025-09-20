@@ -5,7 +5,7 @@ namespace App\actions\EventActions ;
 use App\Models\Event;
 use Illuminate\Support\Facades\DB;
 
-class CreateEventTicketTypes
+class CreateEventTicketTypeAction
 {
     public function __construct(
         public string $name,
