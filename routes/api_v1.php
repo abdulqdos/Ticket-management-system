@@ -2,10 +2,11 @@
 
 
 use App\Http\Controllers\Api\AuthController;
-use App\Http\Controllers\Api\V1\BookingController;
 use App\Http\Controllers\Api\V1\CustomerController;
 use App\Http\Controllers\Api\V1\EventController;
+use App\Http\Controllers\Api\V1\TicketController;
 use App\Http\Controllers\Api\V1\ticketTypeController;
+use Illuminate\Support\Facades\Route;
 
 Route::prefix('v1')->as('api.v1.')->group(function () {
     Route::apiResource('customers', CustomerController::class)->only(["index" , "show"]);
@@ -13,6 +14,8 @@ Route::prefix('v1')->as('api.v1.')->group(function () {
     Route::apiResource('ticket-types', TicketTypeController::class)->only(["index" , "show"]);
 
     Route::middleware('auth:sanctum')->group(function () {
-       Route::post('/events/{event}/ticket-types/{ticket_type}' , [BookingController::class , 'store'])->name('events.ticket-types.store'); // Booking ticket route
+        Route::post('/events/{event}/ticket-types/{ticket_type}' , [TicketController::class , 'store'])->name('events.ticket-types.store'); // Booking ticket route
+        Route::delete('/events/{event}/ticket-types/{ticket_type}' , [TicketController::class , 'destroy'])->name('events.ticket-types.destroy'); // Cancel ticket route
+
     });
 });

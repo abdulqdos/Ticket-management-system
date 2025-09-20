@@ -29,6 +29,12 @@ class Customer extends Authenticatable
         'password'          => 'hashed',
     ];
 
+    public function alreadyBooked(TicketType $ticketType)
+    {
+        return $this->tickets->contains(function ($ticket) use ($ticketType) {
+            return $ticket->ticket_type_id === $ticketType->id;
+        });
+    }
     public function tickets()
     {
         return $this->hasMany(Ticket::class);

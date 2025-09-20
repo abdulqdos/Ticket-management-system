@@ -29,6 +29,7 @@
         Write Testing For Both (Completed)
         Profile => (Pending)
 
-      Booking Event :
-             Booking Event => (In_progress)
-             Cancel Book Event => (Pending)
+      Booking Event : (Ticket Model & Controller)
+        Booking Event => (Completed)
+        Cancel Book Event => (Completed)
+        Write Tests For Both (Pending)

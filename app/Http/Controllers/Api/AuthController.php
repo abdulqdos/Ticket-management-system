@@ -7,34 +7,39 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\LoginRequest;
 use App\Http\Requests\Api\RegisterRequest;
 use App\Models\Customer;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Traits\Api\ApiResponses;
+use Illuminate\Support\Facades\Hash;
+
 class AuthController extends Controller
 {
 
     use ApiResponses ;
     public function login(LoginRequest $request)
     {
-        // Validate Request
         $request->validated();
 
-        // Make sure The User Have account
-        if (!Auth::guard('customer')->attempt($request->only('phone', 'password'))) {
-            return response()->json([
-                'message' => 'Invalid credentials'
-            ], 401);
+        $customer = Customer::query();
+
+        try {
+            $customer = Customer::where('phone', $request->phone)->first();
+        } catch (ModelNotFoundException $e) {
+            return $this->error('Ticket Not Found' ,404);
         }
 
-        // Get Customer
-        $customer = Customer::firstWhere('phone', $request->phone);
+        if (! $customer || ! Hash::check($request->password, $customer->password)) {
+            return $this->error('Invalid credentials', 401);
+        }
 
-        // Return Response
+        $token = $customer->createToken('API token for ' . $customer->phone, ['customer'])->plainTextToken;
+
         return $this->ok(
             'Authenticated',
             [
-                'token' => $customer->createToken('API token for ' . $customer->phone)->plainTextToken,
+                'token' => $token,
             ]
         );
     }
