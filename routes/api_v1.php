@@ -14,8 +14,7 @@ Route::prefix('v1')->as('api.v1.')->group(function () {
     Route::apiResource('ticket-types', TicketTypeController::class)->only(["index" , "show"]);
 
     Route::middleware('auth:sanctum')->group(function () {
-        Route::post('/events/{event}/ticket-types/{ticket_type}' , [TicketController::class , 'store'])->name('events.ticket-types.store'); // Booking ticket route
-        Route::delete('/events/{event}/ticket-types/{ticket_type}' , [TicketController::class , 'destroy'])->name('events.ticket-types.destroy'); // Cancel ticket route
-
+        Route::post('/events/{event}/ticket-types/{ticket_type}' , [TicketController::class , 'store'])->name('tickets.store'); // Booking ticket route
+        Route::delete('/events/{event}/ticket-types/{ticket_type}' , [TicketController::class , 'destroy'])->name('tickets.destroy'); // Cancel ticket route
     });
 });

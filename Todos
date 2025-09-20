@@ -32,4 +32,4 @@
       Booking Event : (Ticket Model & Controller)
         Booking Event => (Completed)
         Cancel Book Event => (Completed)
-        Write Tests For Both (Pending)
+        Write Tests For Both (Completed)
